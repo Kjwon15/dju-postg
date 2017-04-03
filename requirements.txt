@@ -1,0 +1,7 @@
+Flask==0.12.1
+fake-useragent==0.1.5
+lxml==3.7.3
+pyatom==1.4
+pytz==2017.2
+requests==2.13.0
+uWSGI==2.0.15
