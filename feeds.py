@@ -31,13 +31,14 @@ def notification_feed():
     for tr in table.xpath('tr[position() mod 2 = 1 and position() != last()]'):
         number = tr.xpath('td[1]')[0].text_content().strip()
         title = tr.xpath('td[2]')[0].text_content().strip()
+        is_new = bool(tr.xpath('td[2]')[0].xpath('img'))
         author = tr.xpath('td[3]')[0].text_content().strip()
         date = tr.xpath('td[4]')[0].text_content().strip()
         date = datetime.strptime(date, '%Y-%m-%d')
         link = url + tr.xpath('td[2]/a')[0].attrib['href']
 
         feed.add(
-            title='{} {}'.format(number, title),
+            title='{}{} {}'.format(number, ' [new]' if is_new else '', title),
             author=author,
             url=link,
             updated=date
