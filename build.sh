@@ -7,3 +7,4 @@ docker attach "$container_id"
 docker wait "$container_id"
 
 docker commit "$container_id" postg
+docker rm "$container_id"
