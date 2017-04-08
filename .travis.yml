@@ -1,0 +1,6 @@
+deploy:
+  run:
+    - L=~/.local/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L
+    - ~/.local/bin/flynn cluster add -p "$TLSPIN" default kjwon15.tk "$KEY"
+    - ~/.local/bin/flynn -a dju-postg remote add -y
+    - git push flynn
